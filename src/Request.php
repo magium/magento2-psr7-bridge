@@ -5,7 +5,7 @@ namespace Magium\Magento2\Psr7Bridge;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
-use \Magento\Framework\HTTP\PhpEnvironment\Request as MagentoRequest;
+use Magento\Framework\App\Request\Http as MagentoRequest;
 
 class Request implements ServerRequestInterface
 {
