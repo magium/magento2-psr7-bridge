@@ -1,0 +1,24 @@
+{
+  "name": "magium/magento2-psr7-bridge",
+  "description": "Bridge objects that allow PSR-7 based modules to run in Magento 2",
+  "minimum-stability": "stable",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Kevin Schroeder",
+      "email": "kschroeder@magiumlib.com"
+    }
+  ],
+  "require": {
+    "psr/http-message": "^1.0",
+    "magento/framework": "^100"
+  },
+  "autoload": {
+    "psr-4": {
+      "Magium\\Magento2\\Psr7Bridge\\": "src"
+    },
+    "files": [
+      "registration.php"
+    ]
+  }
+}
