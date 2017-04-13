@@ -15,7 +15,10 @@ use Psr\Http\Message\ServerRequestInterface;
 class Example
 {
 
-    public function __construct( 
+    public function __construct( ServerRequestInterface $request )
+    {
+    
+    }
 
 }
 ```
