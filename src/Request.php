@@ -2,6 +2,8 @@
 
 namespace Magium\Magento2\Psr7Bridge;
 
+use GuzzleHttp\Psr7\Request as Psr7Request;
+use GuzzleHttp\Psr7\Uri;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
@@ -10,22 +12,30 @@ use Magento\Framework\App\Request\Http as MagentoRequest;
 class Request implements ServerRequestInterface
 {
     protected $request;
+    protected $psr7;
 
     public function __construct(
         MagentoRequest $request
     )
     {
         $this->request = $request;
+        $this->psr7 = new Psr7Request(
+            $this->request->getMethod(),
+            $this->request->getUriString(),
+            $this->request->getHeaders(),
+            $this->request->getContent()
+        );
     }
 
     public function getProtocolVersion()
     {
-        return $this->getProtocolVersion();
+        return $this->psr7->getProtocolVersion();
     }
 
     public function withProtocolVersion($version)
     {
         $this->request->setVersion($version);
+        $this->psr7->withProtocolVersion($version);
     }
 
     public function getHeaders()
@@ -97,7 +107,7 @@ class Request implements ServerRequestInterface
 
     public function getUri()
     {
-        // TODO: Implement getUri() method.
+        return $this->psr7->getUri();
     }
 
     public function withUri(UriInterface $uri, $preserveHost = false)
