@@ -40,7 +40,7 @@ class Request implements ServerRequestInterface
 
     public function getHeaders()
     {
-        return $this->request->getHeaders();
+        return $this->request->getHeaders()->toArray();
     }
 
     public function hasHeader($name)
