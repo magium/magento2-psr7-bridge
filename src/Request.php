@@ -22,7 +22,7 @@ class Request implements ServerRequestInterface
         $this->psr7 = new Psr7Request(
             $this->request->getMethod(),
             $this->request->getUriString(),
-            $this->request->getHeaders(),
+            $this->request->getHeaders()->toArray(),
             $this->request->getContent()
         );
     }
